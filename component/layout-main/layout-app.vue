@@ -1,11 +1,11 @@
 <template>
-    <div>
-        <LayoutHeader />
-        <!-- <slot /> -->
-        <!-- <LayoutFooter /> -->
+    <div class="dark:bg-slate-900">
+        <LayoutHeader/>
+        <div class="dark:bg-slate-900">
+            <slot />
+        </div>
     </div>
 </template>
 <script setup>
 import LayoutHeader from './layout-header/layout-header.vue'
-import LayoutFooter from './layout-footer/layout-footer.vue'
 </script>
