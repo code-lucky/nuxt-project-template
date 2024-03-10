@@ -4,7 +4,8 @@
             <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="../../../public/images/logo.svg"
                 alt="">
             <UTabs :items="navList" v-model="currentIndex" class="w-[400px] h-[40px]" @change="changeNav" />
-            <UIcon name="i-carbon-light" class="text-xl cursor-pointer dark:text-white" @click="changeDarkMode" />
+            <UIcon v-if="!isDark" name="i-carbon-light" class="text-xl cursor-pointer dark:text-white" @click="changeDarkMode" />
+            <UIcon v-else name="i-carbon-moon" class="text-xl cursor-pointer dark:text-white" @click="changeDarkMode" />
         </div>
     </div>
 </template>

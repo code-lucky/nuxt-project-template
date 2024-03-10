@@ -1,7 +1,7 @@
 <template>
     <div class="dark:bg-slate-900">
         <LayoutHeader/>
-        <div class="dark:bg-slate-900">
+        <div>
             <slot />
         </div>
     </div>
