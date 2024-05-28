@@ -7,17 +7,34 @@
             </div>
             <div class="flex space-x-4 items-center divide-x divide-gray-500">
                 <div class="flex space-x-4 text-sm items-center"><a href="/blank" class=""><span
-                            class="text-gray-700 dark:text-gray-300 light:text-gray-950">Blank</span></a><a href="/post" class=""><span
-                            class="text-gray-700 dark:text-gray-300 light:text-gray-950">Post</span></a><a href="/test" class=""><span
+                            class="text-gray-700 dark:text-gray-300 light:text-gray-950">Blank</span></a><a href="/post"
+                        class=""><span class="text-gray-700 dark:text-gray-300 light:text-gray-950">Post</span></a><a
+                        href="/test" class=""><span
                             class="text-gray-700 dark:text-gray-300 light:text-gray-950">Test</span></a>
                 </div>
 
                 <div class="pl-4 flex space-x-3 text-xl">
                     <div class="flex items-center">
-                        <UIcon class="cursor-pointer" name="i-line-md:moon-alt-to-sunny-outline-loop-transition" />
+                        <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
+                            <UIcon class="cursor-pointer" name="i-line-md:moon-alt-to-sunny-outline-loop-transition" />
+                        </UDropdown>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
+<script setup lang="ts">
+    const items = [
+        [{
+            label: 'Light',
+            icon: 'i-line-md:moon-alt-to-sunny-outline-loop-transition'
+        }, {
+            label: 'Dark',
+            icon: 'i-line-md:moon-rising-alt-loop'
+        }, {
+            label: 'System',
+            icon: 'i-line-md:cog'
+        }]
+    ]
+</script>
