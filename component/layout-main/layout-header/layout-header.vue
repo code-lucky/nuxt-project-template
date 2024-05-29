@@ -14,9 +14,15 @@
                 </div>
 
                 <div class="pl-4 flex space-x-3 text-xl">
-                    <div class="flex items-center">
+                    <div class="flex items-center" v-if="colorMode.preference">
                         <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
-                            <UIcon class="cursor-pointer" name="i-line-md:moon-alt-to-sunny-outline-loop-transition" />
+                            <template v-if="colorMode.preference == 'light'">
+                                <UIcon class="cursor-pointer" name="i-line-md:moon-alt-to-sunny-outline-loop-transition" />
+                            </template>
+                            <template v-else>
+                                <UIcon class="cursor-pointer" name="i-line-md:moon-rising-alt-loop" />
+                            </template>
+                            
                         </UDropdown>
                     </div>
                 </div>
@@ -25,16 +31,20 @@
     </div>
 </template>
 <script setup lang="ts">
+    const colorMode = useColorMode()
     const items = [
         [{
             label: 'Light',
-            icon: 'i-line-md:moon-alt-to-sunny-outline-loop-transition'
+            icon: 'i-line-md:moon-alt-to-sunny-outline-loop-transition',
+            click: () => setTheme('light')
         }, {
             label: 'Dark',
-            icon: 'i-line-md:moon-rising-alt-loop'
-        }, {
-            label: 'System',
-            icon: 'i-line-md:cog'
+            icon: 'i-line-md:moon-rising-alt-loop',
+            click: () => setTheme('dark')
         }]
     ]
+
+    const setTheme = (theme) => {
+        colorMode.preference = theme
+    }
 </script>
