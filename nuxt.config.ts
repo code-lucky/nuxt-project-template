@@ -3,8 +3,5 @@ export default defineNuxtConfig({
   colorMode: {
     preference: 'system',
   },
-  devtools: { enabled: true },
-  plugins: [
-    '~/plugins/vue-filepond.ts', // 引入 vue-filepond 插件
-  ],
+  devtools: { enabled: false },
 })

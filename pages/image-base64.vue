@@ -1,7 +1,7 @@
 <template>
     <div class="w-full container-height">
         <div class="max-w-screen-2xl relative left-0 right-0 m-auto p-3">
-            <file-pond class="mt-3" name="file" ref="pond" label-idle="Drag or click upload image"
+            <file-pond v-if="FilePond" class="mt-3" name="file" ref="pond" label-idle="Drag or click upload image"
                 allow-multiple="false" @init="handleFilePondInit" @addfile="handleAddFile"
                 @removefile="handleRemoveFile" accepted-file-types="image/*"></file-pond>
 
@@ -21,12 +21,13 @@
 </template>
 
 <script setup lang="ts">
+    import { ref, onMounted } from 'vue';
     import vueFilePond from 'vue-filepond';
     import 'filepond/dist/filepond.min.css';
     import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
     import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 
-    const FilePond = vueFilePond(FilePondPluginImagePreview);
+    const FilePond = ref(null);
     const pond = ref(null)
     const base64Data = ref('')
     const toast = useToast()
@@ -104,6 +105,10 @@
                 })
             });
     }
+
+    onMounted(() => {
+      FilePond.value = vueFilePond(FilePondPluginImagePreview);  
+    })
 </script>
 
 <style scoped>

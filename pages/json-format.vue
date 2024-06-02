@@ -15,14 +15,13 @@
             </div>
             <div class="md:w-1/2 w-full border-slate-300 border border-solid rounded-md overflow-auto"
                 :style="{height: customHeight}">
-                <vue-json-pretty v-if="previewData" :data="previewData" :showLineNumber="true" :showIcon="true"
-                    :editable="true" />
+                <vue-json-pretty v-if="previewData" :data="previewData" :showLineNumber="true" :showIcon="true"/>
             </div>
         </div>
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
     import VueJsonPretty from 'vue-json-pretty';
     import 'vue-json-pretty/lib/styles.css';
     const customHeight = ref('600px')
