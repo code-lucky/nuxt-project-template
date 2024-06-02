@@ -6,7 +6,7 @@
                 <a href="/" class=""><span class="text-gray-700 dark:text-gray-300 light:text-gray-950">Front-end
                         tools</span></a>
             </div>
-            <div class="flex space-x-4 items-center divide-x divide-gray-500">
+            <div class="hidden space-x-4 items-center divide-x divide-gray-500 md:flex">
                 <div class="flex space-x-4 text-sm items-center">
                     <template v-for="(item,idx) in tbas" :key="idx">
                         <span class="text-gray-700 dark:text-gray-300 light:text-gray-950">
@@ -33,11 +33,19 @@
                     </div>
                 </div>
             </div>
+
+            <div class="flex items-center md:hidden">
+                <div class="flex items-center">
+                    <UIcon v-if="isMenu" class="cursor-pointer" :size="24" name="i-line-md:align-center" @click="isMenu = !isMenu"/>
+                    <UIcon v-else class="cursor-pointer" :size="24" name="i-line-md:align-left"  @click="isMenu = !isMenu"/>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 <script setup lang="ts">
     const colorMode = useColorMode()
+    const isMenu = ref(false)
     const items = [
         [{
             label: 'Light',

@@ -1,13 +1,14 @@
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  mode: 'jit',
   darkMode: 'class',
   theme: {
     screens: {
-      sm: '480px',
-      md: '768px',
-      lg: '1280px',
-      xl: '1440px',
+      'sm': '480px',
+      'md': '768px',
+      'lg': '1280px',
+      'xl': '1440px',
       '2xl': '1536px',
     },
     extend: {

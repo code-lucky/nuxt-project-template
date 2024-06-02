@@ -1,24 +1,20 @@
 <template>
-    <LayoutApp>
-        <UNotifications />
-        <div class="w-full container-height">
-            <div class="max-w-screen-2xl relative left-0 right-0 m-auto p-3">
+    <div class="w-full h-full">
+        <div class="max-w-screen-2xl relative left-0 right-0 m-auto p-3 container-height">
 
-                <UTextarea color="white" variant="none" placeholder="Here is the generated base64 data"
-                    v-model="base64Data" resize
-                    class="w-full custom-height border-slate-300 border border-solid rounded-md mt-6" :rows="12" />
+            <UTextarea color="white" variant="none" placeholder="base64 data generates images" v-model="base64Data"
+                resize class="w-full custom-height border-slate-300 border border-solid rounded-md mt-6" :rows="28" />
 
-                <div class="mt-3 flex gap-3">
-                    <button class="bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white p-2 rounded min-w-20"
-                        @click="downloadFile">Generate File</button>
-                    <button class="bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white p-2 rounded min-w-20"
-                        @click="paste">paste</button>
-                    <button class="bg-violet-500 shadow-lg shadow-violet-500/50 text-white p-2 rounded min-w-20"
-                        @click="clear">Clear</button>
-                </div>
+            <div class="mt-3 flex gap-3">
+                <button class="bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white p-2 rounded min-w-20"
+                    @click="downloadFile">Generate File</button>
+                <button class="bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white p-2 rounded min-w-20"
+                    @click="paste">paste</button>
+                <button class="bg-violet-500 shadow-lg shadow-violet-500/50 text-white p-2 rounded min-w-20"
+                    @click="clear">Clear</button>
             </div>
         </div>
-    </LayoutApp>
+    </div>
 </template>
 
 <script setup>
@@ -50,7 +46,7 @@
         base64Data.value = '';
     };
 
-    const paste = () =>{
+    const paste = () => {
         navigator.clipboard.readText().then(text => {
             base64Data.value = text;
         }).catch(err => {
@@ -76,21 +72,40 @@
             return;
         }
 
-        const file = base64ToFile(base64Data.value, 'downloaded_image.png');
-        const url = URL.createObjectURL(file);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = file.name;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        toast.success('File downloaded successfully');
+        try {
+            // 获取当前时间的时间戳
+            const random = new Date().getTime();
+            const file = base64ToFile(base64Data.value, `${random}.png`);
+            const url = URL.createObjectURL(file);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = file.name;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            toast.add({
+                id: '1',
+                title: 'Notification',
+                description: 'Generate success',
+                icon: 'i-ep-success-filled',
+                timeout: 2000,
+            })
+        } catch (e) {
+            toast.add({
+                id: '2',
+                title: 'Notification',
+                description: 'Failed to generate image',
+                icon: 'i-material-symbols-light-error',
+                timeout: 2000,
+                color: 'red'
+            })
+        }
     };
 </script>
 
 <style scoped>
     .container-height {
-        min-height: calc(100vh - 64px - 4rem);
+        min-height: calc(100vh - 64px -52px - 4rem);
     }
 </style>

@@ -1,27 +1,23 @@
 <template>
-    <LayoutApp>
-        <UNotifications />
-        <div class="w-full container-height">
-            <div class="max-w-screen-2xl relative left-0 right-0 m-auto p-3">
-                <file-pond class="mt-3" name="file" ref="pond" label-idle="Drag or click upload image"
-                    allow-multiple="false" @init="handleFilePondInit" @addfile="handleAddFile"
-                    @removefile="handleRemoveFile" accepted-file-types="image/*"></file-pond>
+    <div class="w-full container-height">
+        <div class="max-w-screen-2xl relative left-0 right-0 m-auto p-3">
+            <file-pond class="mt-3" name="file" ref="pond" label-idle="Drag or click upload image"
+                allow-multiple="false" @init="handleFilePondInit" @addfile="handleAddFile"
+                @removefile="handleRemoveFile" accepted-file-types="image/*"></file-pond>
 
-                <UTextarea color="white" variant="none" placeholder="Here is the generated base64 data"
-                    v-model="base64Data" resize
-                    class="w-full custom-height border-slate-300 border border-solid rounded-md mt-6" :rows="12" />
+            <UTextarea color="white" variant="none" placeholder="Here is the generated base64 data" v-model="base64Data"
+                resize class="w-full custom-height border-slate-300 border border-solid rounded-md mt-6" :rows="12" />
 
-                <div class="mt-3 flex gap-3">
-                    <button class="bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white p-2 rounded min-w-20"
-                        @click="generate">Generate</button>
-                    <button class="bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white p-2 rounded min-w-20"
-                        @click="copyData">Copy</button>
-                    <button class="bg-violet-500 shadow-lg shadow-violet-500/50 text-white p-2 rounded min-w-20"
-                        @click="clear">Clear</button>
-                </div>
+            <div class="mt-3 flex gap-3">
+                <button class="bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white p-2 rounded min-w-20"
+                    @click="generate">Generate</button>
+                <button class="bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white p-2 rounded min-w-20"
+                    @click="copyData">Copy</button>
+                <button class="bg-violet-500 shadow-lg shadow-violet-500/50 text-white p-2 rounded min-w-20"
+                    @click="clear">Clear</button>
             </div>
         </div>
-    </LayoutApp>
+    </div>
 </template>
 
 <script setup>

@@ -1,18 +1,16 @@
 <template>
-  <LayoutApp>
-    <div class="flex w-full justify-center">
-      <div class="max-w-screen-2xl w-full items-center flex justify-center vh">
-        <h1 class="text-center flex flex-col font-bold">
-          <span class="drop-shadow-xl text-6xl sm:text-8xl md:text-8xl lg:text-8xl 2xl:text-8xl block font-black">
-            <span class="font-change-color-1">Front-end</span>
-          </span>
-          <span class="drop-shadow-xl text-6xl sm:text-8xl md:text-8xl lg:text-8xl 2xl:text-8xl block font-black">
-            <span class="font-change-color-2">Tools</span>
-          </span>
-        </h1>
-      </div>
+  <div class="flex w-full justify-center">
+    <div class="max-w-screen-2xl w-full items-center flex justify-center vh">
+      <h1 class="text-center flex flex-col font-bold">
+        <span class="drop-shadow-xl text-6xl sm:text-8xl md:text-8xl lg:text-8xl 2xl:text-8xl block font-black">
+          <span class="font-change-color-1">Front-end</span>
+        </span>
+        <span class="drop-shadow-xl text-6xl sm:text-8xl md:text-8xl lg:text-8xl 2xl:text-8xl block font-black">
+          <span class="font-change-color-2">Tools</span>
+        </span>
+      </h1>
     </div>
-  </LayoutApp>
+  </div>
 </template>
 
 <script setup>
@@ -20,9 +18,10 @@
 </script>
 
 <style scoped>
-  .vh{
+  .vh {
     height: calc(100vh - 52px - 64px);
   }
+
   /* .font-change-color-1,
   .font-change-color-2 {
     display: inline-block;
