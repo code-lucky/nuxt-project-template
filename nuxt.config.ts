@@ -4,4 +4,7 @@ export default defineNuxtConfig({
     preference: 'system',
   },
   devtools: { enabled: true },
+  plugins: [
+    '~/plugins/vue-filepond.ts', // 引入 vue-filepond 插件
+  ],
 })
