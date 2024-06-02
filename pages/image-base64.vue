@@ -20,7 +20,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
     import vueFilePond from 'vue-filepond';
     import 'filepond/dist/filepond.min.css';
     import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
