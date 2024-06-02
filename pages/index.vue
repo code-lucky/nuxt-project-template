@@ -14,7 +14,6 @@
 </template>
 
 <script setup>
-  import LayoutApp from '@/component/layout-main/layout-app.vue'
 </script>
 
 <style scoped>

@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-full">
+    <div class="w-full container-height">
         <div class="max-w-screen-2xl relative left-0 right-0 m-auto p-3 container-height">
 
             <UTextarea color="white" variant="none" placeholder="base64 data generates images" v-model="base64Data"
@@ -19,7 +19,6 @@
 
 <script setup>
     import { ref } from 'vue';
-    import LayoutApp from '@/component/layout-main/layout-app.vue';
     const base64Data = ref('');
     const toast = useToast();
 
@@ -106,6 +105,6 @@
 
 <style scoped>
     .container-height {
-        min-height: calc(100vh - 64px -52px - 4rem);
+        min-height: calc(100vh - 64px - 4rem);
     }
 </style>

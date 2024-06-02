@@ -23,7 +23,6 @@
 </template>
 
 <script setup>
-    import LayoutApp from '@/component/layout-main/layout-app.vue'
     import VueJsonPretty from 'vue-json-pretty';
     import 'vue-json-pretty/lib/styles.css';
     const customHeight = ref('600px')

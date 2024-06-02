@@ -1,17 +1,15 @@
-<script setup lang="ts">
-    import AppHeader from '~/component/layout-main/layout-header/layout-header.vue'
-    import AppFooter from '~/component/layout-main/layout-footer/layout-footer.vue'
+<script lang="ts" setup>
+    import LayoutHeader from '~/components/layout/Header.vue'
+    import LayoutFooter from '~/components/layout/Footer.vue'
 </script>
 
 <template>
-    <AppHeader />
-
-    <NuxtLayout>
-        <NuxtLoadingIndicator />
-        <NuxtPage />
-    </NuxtLayout>
-
-    <AppFooter />
-
-    <UNotifications />
+    <Body class="antialiased duration-300 transition-colors text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-950">
+        <LayoutHeader />
+        <NuxtLayout>
+            <NuxtLoadingIndicator />
+            <NuxtPage />
+        </NuxtLayout>
+        <LayoutFooter/>
+    </Body>
 </template>

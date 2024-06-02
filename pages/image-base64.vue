@@ -21,7 +21,6 @@
 </template>
 
 <script setup>
-    import LayoutApp from '@/component/layout-main/layout-app.vue'
     import vueFilePond from 'vue-filepond';
     import 'filepond/dist/filepond.min.css';
     import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
