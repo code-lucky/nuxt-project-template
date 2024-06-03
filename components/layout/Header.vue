@@ -119,6 +119,12 @@
                             location.href = '/base64-image';
                         },
                     },
+                    {
+                        label: 'image compression',
+                        click: () => {
+                            location.href = '/image-compression';
+                        },
+                    }
                 ],
             ],
         },
