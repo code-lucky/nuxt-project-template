@@ -7,7 +7,7 @@
 
             <div class="mt-3 flex gap-3">
                 <button class="bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white p-2 rounded min-w-20"
-                    @click="compressionImage">compression</button>
+                    @click="compressionImage">Compress</button>
             </div>
         </div>
     </div>
@@ -23,7 +23,6 @@
 
     const FilePond = ref(null);
     const pond = ref(null);
-    const base64Data = ref('');
     const toast = useToast();
     const selectedFile = ref<File | null>(null);
 
@@ -62,7 +61,7 @@
         const file = selectedFile.value;
 
         const options = {
-            maxSizeMB: 1,
+            maxSizeMB: 0.2,
             maxWidthOrHeight: 800,
             useWebWorker: true
         };
@@ -71,13 +70,14 @@
             const compressedFile = await imageCompression(file, options);
             console.log('compressed file:', compressedFile);
 
-            // 显示压缩后的图片
-            const reader = new FileReader();
-            reader.readAsDataURL(compressedFile);
-            reader.onload = (e) => {
-                console.log('compressed image data URL:', e.target.result);
-                base64Data.value = e.target.result;
-            };
+            // 创建下载链接
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(compressedFile);
+            downloadLink.download = `compressed_${file.name}`;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+
         } catch (error) {
             console.error('Error compressing image:', error);
             toast.error('Error compressing image');
