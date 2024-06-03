@@ -91,7 +91,7 @@
 
     const tbas = ref([
         {
-            label: 'JSON',
+            label: 'Json',
             children: [
                 [
                     {
